@@ -1,4 +1,4 @@
-# Claude Work
+# Claude Activity
 
 A macOS menu bar app + desktop widget that shows the work Claude Code has done for you,
 read live from `~/.claude/projects`.
@@ -13,8 +13,8 @@ read live from `~/.claude/projects`.
 Needs only the Xcode Command Line Tools (no Xcode), macOS 14+.
 
 ```bash
-bash build.sh        # builds and installs ~/Applications/Claude Work.app
-open ~/Applications/"Claude Work.app"
+bash build.sh        # builds and installs ~/Applications/Claude Activity.app
+open ~/Applications/"Claude Activity.app"
 ```
 
-Everything lives in `main.swift`. Settings: `defaults read local.claudework`.
+Everything lives in `main.swift`. Settings: `defaults read local.claudeactivity`.

@@ -499,7 +499,7 @@ struct WidgetView: View {
         .padding(9)   // native widget windows carry 9pt of transparent inset inside their 180pt cell
         .contextMenu {
             Button("Refresh") { store.refresh() }
-            Button("Open Claude Work") { store.onOpen() }
+            Button("Open Claude Activity") { store.onOpen() }
             Menu("Size") {
                 Button("Medium") { store.widgetSize = .medium }
                 Button("Large") { store.widgetSize = .large }
@@ -569,7 +569,7 @@ struct ContentView: View {
         VStack(spacing: 12) {
             HStack {
                 Image(systemName: "sparkles").foregroundStyle(.orange)
-                Text("Claude Work").font(.system(size: 15, weight: .bold, design: .rounded))
+                Text("Claude Activity").font(.system(size: 15, weight: .bold, design: .rounded))
                 Spacer()
                 if store.loading { ProgressView().controlSize(.small) }
                 Picker("", selection: $tab) {
@@ -643,7 +643,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
         item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         if let b = item.button {
-            b.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: "Claude Work")
+            b.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: "Claude Activity")
             b.target = self
             b.action = #selector(toggle)
         }
@@ -683,12 +683,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             let hv = DragHostingView(rootView: WidgetView(store: store))
             hv.onDrop = { [weak self] in self?.snapWidget() }
             p.contentView = hv
-            if p.setFrameUsingName("ClaudeWorkWidget2") {
+            if p.setFrameUsingName("ClaudeActivityWidget") {
                 p.setFrame(NSRect(x: p.frame.minX, y: p.frame.maxY - sz.height, width: sz.width, height: sz.height), display: false)
             } else if let v = NSScreen.screens.first?.visibleFrame {
                 p.setFrameOrigin(NSPoint(x: v.maxX - sz.width - 8, y: v.maxY - sz.height - 8))
             }
-            p.setFrameAutosaveName("ClaudeWorkWidget2")
+            p.setFrameAutosaveName("ClaudeActivityWidget")
             panel = p
         }
         panel?.orderFrontRegardless()
